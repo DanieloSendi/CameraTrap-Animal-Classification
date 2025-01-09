@@ -2,6 +2,40 @@
 
 Welcome to the **Image Classification Project**, using deep learning techniques for camera trap images analysis. The motivation for undertaking the topic of wildlife species classification was to develop an intelligent tool that would assist researchers in the rapid and accurate identification of animal species in camera trap images. The images were collected in Taï National Park by the Wild Chimpanzee Foundation and the Max Planck Institute for Evolutionary Anthropology, and were gathered and published as part of a competition by the organizers on the [DrivenData](https://www.drivendata.org/competitions/87/competition-image-classification-wildlife-conservation/) platform. Camera traps are one of the best tools available for monitoring wildlife populations, but the vast amount of data they generate requires advanced processing. By applying deep learning techniques, the aim was to support conservation efforts by automating the analysis of this data. The classification involved eight categories seven animal species (birds, civets, duikers, hogs, leopards, other monkeys, rodents) and additional class for images with no animals. The goal was to build a model that could predict whether an image contains one of these species or belongs to the empty class.
 
+## Project Overview
+
+The project implemented and tested five models, including three convolutional neural network architectures. Key evaluation metrics included **loss**, **accuracy**, **precision**, **recall**, and **F1-score**. The study also explored the impact of **data splitting** and **augmentation** techniques.
+
+## Models and methodologies
+
+The performance of all models was evaluated based on loss and accuracy metrics in validation set. Below is a table summarizing the configuration of all models and results.
+
+![Model Results](reports\figures\Configuration&Results.png)
+
+The table presents a comparison of all models using loss and accuracy metrics. The ResNet-101 model demonstrated better performance when data was split using the first method, stratified k-fold, which ensures an even distribution of classes between datasets. In contrast, when the data was split based on "site" location clustering, the model achieved significantly worse results. The classification accuracy was only 38%, which was extremely low. Consequently, further tests were conducted using the first data split method.
+
+Surprisingly, the application of augmentation techniques to the ResNet model resulted in worse performance, as indicated by both the loss function values and classification accuracy.
+
+In pursuit of better results, two additional architectures were tested: EfficientNet and ConvNeXt. Both models outperformed ResNet, but ConvNeXt-Base proved to be the best. This model achieved the lowest loss value, 0.44, and an overall classification accuracy of 84.63%, outperforming all other models.
+
+## Classification report metrics for best model - ConvNeXt Base
+
+To analyze the classification performance for each class, metrics such as precision, recall, and F1-score were calculated. The following chart illustrates the performance for all classes.
+
+![Classification Report](reports\figures\Classification-Report.png)
+
+## Summary and future work
+
+The intended goal was successfully achieved through the implementation and analysis of deep neural network models for classifying animal species in camera trap images. A key factor was the appropriate data split method, which significantly impacted model training. However, the application of augmentation did not yield the expected results and led to a decrease in classification accuracy.
+
+To enhance results in future studies, consider:
+
+- Object Detection: Utilize detection models to identify objects within images.
+- Classification Refinement: Use convolutional neural networks to classify detected objects.
+
+
+---
+
 ## Environment Setup
 
 This guide provides all necessary steps to configure local development environment, including setting up a Python virtual environment (venv), installing dependencies, and running the application.
@@ -87,16 +121,6 @@ In your virtual environment, you'll need to install the `ipykernel` package. Run
    ```bash
    pip install ipykernel
    ```
-
-## Track experiments and visualize results with [Weights & Biases](https://wandb.ai/site)
-
-### Set up the wandb library
-
-Install the CLI and Python library for interacting with the Weights and Biases API.
-
-```bash
-pip install wandb
-```
 
 ---
 
