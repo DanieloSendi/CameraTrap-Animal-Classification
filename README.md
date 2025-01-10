@@ -10,7 +10,7 @@ The project implemented and tested five models, including three convolutional ne
 
 The performance of all models was evaluated based on loss and accuracy metrics in validation set. Below is a table summarizing the configuration of all models and results.
 
-![Model Results](reports\figures\Configuration&Results.png)
+![Model Results](reports/figures/Configuration&Results.png)
 
 The table presents a comparison of all models using loss and accuracy metrics. The ResNet-101 model demonstrated better performance when data was split using the first method, stratified k-fold, which ensures an even distribution of classes between datasets. In contrast, when the data was split based on "site" location clustering, the model achieved significantly worse results. The classification accuracy was only 38%, which was extremely low. Consequently, further tests were conducted using the first data split method.
 
@@ -22,7 +22,7 @@ In pursuit of better results, two additional architectures were tested: Efficien
 
 To analyze the classification performance for each class, metrics such as precision, recall, and F1-score were calculated. The following chart illustrates the performance for all classes.
 
-![Classification Report](reports\figures\Classification-Report.png)
+![Classification Report](reports/figures/Classification-Report.png)
 
 ## Summary and future work
 
